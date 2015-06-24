@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <RDF:Description about="<%= install.about %>">
+    <em:id><%= install.id %></em:id>
+
+    <em:bootstrap><%= install.bootstrap %></em:bootstrap>
+    <em:type><%= install.type %></em:type>
+
+    <em:unpack><%= install.unpack %></em:unpack>
+    <em:version><%= meta.version %></em:version>
+    <em:name><%= install.name %></em:name>
+    <em:description><%= install.description %></em:description>
+    <em:creator/>
+    <em:homepageURL><%= install.homepageURL %></em:homepageURL>
+    <em:updateURL><%= install.updateURL %></em:updateURL>
+
+    <em:targetApplication>
+      <RDF:Description>
+        <em:id><%= targetApplication.id %></em:id>
+        <em:minVersion><%= targetApplication.minVersion %></em:minVersion>
+        <em:maxVersion><%= targetApplication.maxVersion %></em:maxVersion>
+      </RDF:Description>
+    </em:targetApplication>
+  </RDF:Description>
+</RDF:RDF>

@@ -1,26 +1,51 @@
 {
   "name": "mozilla-universal-search-addon",
-  "version": "1.1.0",
   "description": "universal search desktop experiments in addon format",
+  "version": "1.1.0",
+  "bugs": {
+    "url": "https://github.com/mozilla/universal-search-addon/issues"
+  },
+  "dependencies": {
+    "jpm": "^1.0.0"
+  },
+  "devDependencies": {
+    "lodash": "3.10.0"
+  },
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "homepage": "https://github.com/mozilla/universal-search-addon",
+  "license": "MPL2",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "rdf": {
+    "targetApplication": {
+      "id": "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}",
+      "minVersion": "38.0",
+      "maxVersion": "42.*",
+      "updateLink": "https://people.mozilla.org/~jhirsch/universal-search-addon/addon.xpi"
+    },
+    "install": {
+      "about": "urn:mozilla:install-manifest",
+      "id": "universal-search-addon@mozilla.com",
+      "bootstrap": true,
+      "type": 2,
+      "unpack": false,
+      "name": "Universal Search Addon",
+      "description": "Universal Search desktop FF experiments in addon format",
+      "homepageURL": "https://github.com/mozilla/universal-search-addon",
+      "updateURL": "https://people.mozilla.org/~jhirsch/universal-search-addon/update.rdf"
+    },
+    "update": {
+      "about": "urn:mozilla:extension:universal-search-addon@mozilla.com"
+    }
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/mozilla/universal-search-addon"
   },
-  "author": "",
-  "license": "MPL2",
-  "bugs": {
-    "url": "https://github.com/mozilla/universal-search-addon/issues"
-  },
-  "homepage": "https://github.com/mozilla/universal-search-addon",
-  "dependencies": {
-    "jpm": "^1.0.0"
-  },
-  "engines": {
-    "firefox": ">=38.0a1",
-    "fennec": ">=38.0a1"
+  "scripts": {
+    "rdf-compile": "node scripts/rdf-compile",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
