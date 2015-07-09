@@ -1,0 +1,4 @@
+extends: universal-search
+
+rules:
+  no-console: 0
