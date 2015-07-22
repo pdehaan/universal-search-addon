@@ -11,7 +11,7 @@ XPCOMUtils.defineLazyModuleGetter(this, 'WebChannel',
   'resource://gre/modules/WebChannel.jsm');
 
 function Transport() {
-  var prefBranch = Cc['@mozilla.org/preferences-service;1']
+  const prefBranch = Cc['@mozilla.org/preferences-service;1']
                    .getService(Ci.nsIPrefService)
                    .getBranch('');
   this.frameBaseURL = prefBranch.getPrefType('services.universalSearch.baseURL') ?
@@ -66,16 +66,16 @@ Transport.prototype = {
   // the dedupe function into a memoize-like combinator) would actually yield
   // more understandable or readable code than what we've got here. :-\
   onAutocompleteSearchResults: function(msg) {
-    var currentInput = msg && msg.length && msg[0].text;
-    if (currentInput && currentInput == this._lastAutocompleteSearchTerm) {
+    const currentInput = msg && msg.length && msg[0].text;
+    if (currentInput && currentInput === this._lastAutocompleteSearchTerm) {
       return;
     }
     this._lastAutocompleteSearchTerm = currentInput;
     this.sendMessage('autocomplete-search-results', msg);
   },
   onSuggestedSearchResults: function(msg) {
-    var currentInput = msg && msg.term;
-    if (currentInput && currentInput == this._lastSuggestedSearchTerm) {
+    const currentInput = msg && msg.term;
+    if (currentInput && currentInput === this._lastSuggestedSearchTerm) {
       return;
     }
     this._lastSuggestedSearchTerm = currentInput;
@@ -91,12 +91,12 @@ Transport.prototype = {
     this.sendMessage('popupclose');
   },
   sendMessage: function(evt, data) {
-    var msg = {
+    const msg = {
       type: evt,
       data: data || null
     };
     console.log('sending the ' + evt + ' message to content:' + JSON.stringify(msg));
-    var ctx = {
+    const ctx = {
       browser: window.US.browser,
       principal: Cc['@mozilla.org/systemprincipal;1']
                  .createInstance(Ci.nsIPrincipal)
